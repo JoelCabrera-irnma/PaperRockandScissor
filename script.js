@@ -8,11 +8,11 @@ function getComputerChoice(...args) {
   const string2 = "Piedra";
   const string3 = "Tijera";
   
-  const computerSelection = getComputerChoice(string1, string2, string3);
-  console.log(computerSelection);
+  let computerSelection = getComputerChoice(string1, string2, string3);
+  /*console.log(computerSelection);*/
   
 //Pedir al usuario un elemento
-let playerSelection = prompt("Elije un elemento")
+
 //Comparar ambos elementos y Condicionar quien gana a quien
 function roundSingle (playerSelection, computerSelection) {
     if (playerSelection===computerSelection) {return console.log("Es un Empate")}
@@ -25,17 +25,35 @@ function roundSingle (playerSelection, computerSelection) {
     }
 
 
-console.log(roundSingle(playerSelection,computerSelection))
+/*console.log(roundSingle(playerSelection,computerSelection))*/
 
 
 //Gana el mejor de 5 partidas
 
 function game() {
+    let playerSelection = prompt("Elije un elemento")
     roundSingle (playerSelection, computerSelection)
+    console.log(computerSelection)
+
+    playerSelection = prompt ("Elije un elemento")
+    computerSelection = getComputerChoice(string1, string2, string3)
     roundSingle (playerSelection, computerSelection)
+    console.log(computerSelection)
+
+    playerSelection = prompt ("Elije un elemento")
+    computerSelection = getComputerChoice(string1, string2, string3)
     roundSingle (playerSelection, computerSelection)
+    console.log(computerSelection);
+
+    playerSelection = prompt ("Elije un elemento")
+    computerSelection = getComputerChoice(string1, string2, string3)
     roundSingle (playerSelection, computerSelection)
+    console.log(computerSelection);
+
+    playerSelection = prompt ("Elije un elemento")
+    computerSelection = getComputerChoice(string1, string2, string3)
     roundSingle (playerSelection, computerSelection)
+    console.log(computerSelection);
 
 }
 
