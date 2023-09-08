@@ -1,2 +1,2 @@
 # PaperRockandScissor
-Firs work in JS
+First work in JS
