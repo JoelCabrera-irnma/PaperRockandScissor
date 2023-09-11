@@ -1,6 +1,55 @@
-//Creacion de un Array con los elementos del juego
-const choices = ["piedra", "papel", "tijera"]; 
+function selectorImg1(option){
+    if(option==="tijera"){
+    
+    const tijera = document.querySelector('.imgUser')
+    tijera.innerHTML = "";
+    const imagen = document.createElement('img');
+    imagen.src = "./img/scissors-28697_640.png";
+    tijera.appendChild(imagen)   
+}
+    else if(option==='papel'){
+    const papel = document.querySelector('.imgUser')
+    papel.innerHTML = "";
+    const imagen = document.createElement('img');
+    imagen.src = "./img/scroll-34696_640.png";
+    papel.appendChild(imagen)
+    }
+    else {
+    const piedra = document.querySelector('.imgUser')
+    piedra.innerHTML = "";
+    const imagen = document.createElement('img');
+    imagen.src = "./img/stone-576268_640.png";
+    piedra.appendChild(imagen)
+    }
+}
 
+function selectorImg2(option){
+    if(option==="tijera"){
+    
+    const tijera = document.querySelector('.imgCompu')
+    tijera.innerHTML = "";
+    const imagen = document.createElement('img');
+    imagen.src = "./img/scissors-28697_640.png";
+    tijera.appendChild(imagen)   
+}
+    else if(option==='papel'){
+    const papel = document.querySelector('.imgCompu')
+    papel.innerHTML = "";
+    const imagen = document.createElement('img');
+    imagen.src = "./img/scroll-34696_640.png";
+    papel.appendChild(imagen)
+    }
+    else {
+    const piedra = document.querySelector('.imgCompu')
+    piedra.innerHTML = "";
+    const imagen = document.createElement('img');
+    imagen.src = "./img/stone-576268_640.png";
+    piedra.appendChild(imagen)
+    }
+}
+
+//Creacion de un Array con los elementos del juego y f. eleccion de la computadora
+const choices = ["piedra", "papel", "tijera"]; 
 
 function getComputerChoice() {
     numAle = choices[Math.floor(Math.random() * choices.length)]
@@ -26,31 +75,39 @@ let rondasJugadas = 0
 let userScore = 0;
 let compuScore = 0;
 function singleRound(e){
-    //console.log("-------")
-    let User = e.target.computedName.toLowerCase();
+    
+    let User = e.target.computedName.toLowerCase(); //Aqui esta implicita la eleccion del Jugador
+    document.querySelector('.optionUser').textContent=`Usted eligio ${User}`;
+    selectorImg1(User);
     let Compu = getComputerChoice()
+    document.querySelector('.optionCompu').textContent=`La PC eligio ${Compu}`;
+    selectorImg2(Compu);
     rondasJugadas++
     let winner = comparation(User,Compu)
     
-    //Esta parte de la funcion sirve para la acumlacion de puntos
     console.log(User)
     console.log(winner)
+    //Esta parte de la funcion sirve para la acumlacion de puntos
     if (winner.includes("Usuario Gana")) 
     {userScore++}
     else if (winner.includes("Computer Gana"))
     {compuScore++};
-
-    if(rondasJugadas<5){return (document.querySelector('.rondas').textContent=`Ronda ${rondasJugadas}`)}
-    else {  if (userScore>compuScore) {return document.querySelector('.resultado').textContent ="Ganaste eres un capo!!!"}
-            else if (userScore<compuScore) {return document.querySelector('.resultado').textContent ="Perdiste la partida...Intentalo otra vez"}
-            else {return document.querySelector('.resultado').textContent ="Empataron"}
+    document.querySelector('.score').textContent=`Usuario: ${userScore}  Computadora: ${compuScore}`
+    
+    //Esta parte decide hasta que numero de rondas jugar y quien gana.
+    if(rondasJugadas<5){ (document.querySelector('.rondas').textContent=`Ronda ${rondasJugadas}`)}
+    else {  document.querySelector('.rondas').textContent=`Ronda 5`
+            if (userScore>compuScore) { document.querySelector('.resultado').textContent ="Ganaste eres un capo/a!!!"}
+            else if (userScore<compuScore) { document.querySelector('.resultado').textContent ="Perdiste la partida...Intentalo otra vez"}
+            else { document.querySelector('.resultado').textContent ="Empataron"}
+            document.querySelectorAll('button').forEach(button => {
+                button.disabled = true;})
         }
     }
 //console.log(singleRound(playerSelection,computerSelection))
 
 
-
-const buttons = document.querySelectorAll('button')
+const buttons = document.querySelectorAll('.push')
 const way = buttons.forEach(buton => buton.addEventListener('click',singleRound));
 
 
