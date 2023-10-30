@@ -111,3 +111,15 @@ const buttons = document.querySelectorAll('.push')
 const way = buttons.forEach(buton => buton.addEventListener('click',singleRound));
 
 
+document.querySelector('.start').addEventListener('click', function() {
+  // Obtener todos los botones a habilitar
+  const botones = document.querySelectorAll('.push');
+
+  // Recorrer los botones y habilitarlos
+  botones.forEach(function(boton) {
+    boton.removeAttribute('disabled');
+    boton.classList.add('button-19')
+  });
+});
+
+
