@@ -74,9 +74,9 @@ de colocacion de las funciones*/
 let rondasJugadas = 0
 let userScore = 0;
 let compuScore = 0;
-function singleRound(e){
-    
-    let User = e.target.computedName.toLowerCase(); //Aqui esta implicita la eleccion del Jugador
+function singleRound(but){
+    console.log(but.textContent)
+    let User = but.textContent.toLowerCase(); //Aqui esta implicita la eleccion del Jugador
     document.querySelector('.optionUser').textContent=`Usted eligio ${User}`;
     selectorImg1(User);
     let Compu = getComputerChoice()
@@ -108,7 +108,7 @@ function singleRound(e){
 
 
 const buttons = document.querySelectorAll('.push')
-const way = buttons.forEach(buton => buton.addEventListener('click',singleRound));
+const way = buttons.forEach(buton => buton.addEventListener('click',()=>{singleRound(buton)}));
 
 
 document.querySelector('.start').addEventListener('click', function() {
@@ -121,5 +121,3 @@ document.querySelector('.start').addEventListener('click', function() {
     boton.classList.add('button-19')
   });
 });
-
-
